@@ -41,6 +41,17 @@ set_property CONFIG.Round_Mode Nearest_Even [get_ips cordic_0]
 create_ip -vlnv [latest_ip axis_data_fifo] -module_name axis_data_fifo_0
 set_property -dict [list CONFIG.TDATA_NUM_BYTES {2} CONFIG.FIFO_DEPTH {128}] [get_ips axis_data_fifo_0]
 
+# Addsub
+create_ip -vlnv [latest_ip c_addsub] -module_name c_addsub_fft_quad
+set_property -dict [list \
+    CONFIG.A_Width {32} CONFIG.B_Width {32} \
+    CONFIG.Latency_Configuration {Manual} \
+    CONFIG.CE {false} \
+    CONFIG.Out_Width {32} \
+    CONFIG.Latency {3} \
+] [get_ips c_addsub_fft_quad]
+
+
 # file groups
 ipx::add_file ./fft_quad.srcs/sources_1/ip/xfft_0/xfft_0.xci \
 [ipx::get_file_groups xilinx_anylanguagesynthesis -of_objects [ipx::current_core]]
