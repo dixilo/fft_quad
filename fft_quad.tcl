@@ -53,15 +53,15 @@ set_property -dict [list \
 
 
 # file groups
-ipx::add_file ./fft_quad.srcs/sources_1/ip/xfft_0/xfft_0.xci \
+ipx::add_file fft_quad.srcs/sources_1/ip/xfft_0/xfft_0.xci \
 [ipx::get_file_groups xilinx_anylanguagesynthesis -of_objects [ipx::current_core]]
-ipx::add_file ./fft_quad.srcs/sources_1/ip/axis_data_fifo_0/axis_data_fifo_0.xci \
+ipx::add_file fft_quad.srcs/sources_1/ip/axis_data_fifo_0/axis_data_fifo_0.xci \
 [ipx::get_file_groups xilinx_anylanguagesynthesis -of_objects [ipx::current_core]]
-ipx::add_file ./fft_quad.srcs/sources_1/ip/cordic_0/cordic_0.xci \
+ipx::add_file fft_quad.srcs/sources_1/ip/cordic_0/cordic_0.xci \
 [ipx::get_file_groups xilinx_anylanguagesynthesis -of_objects [ipx::current_core]]
-ipx::add_file ./fft_quad.srcs/sources_1/ip/c_addsub_fft_quad/c_addsub_fft_quad.xci \
+ipx::add_file fft_quad.srcs/sources_1/ip/c_addsub_fft_quad/c_addsub_fft_quad.xci \
 [ipx::get_file_groups xilinx_anylanguagesynthesis -of_objects [ipx::current_core]]
-ipx::reorder_files -after ./fft_quad.srcs/sources_1/ip/c_addsub_fft_quad/c_addsub_fft_quad.xci \
+ipx::reorder_files -after fft_quad.srcs/sources_1/ip/c_addsub_fft_quad/c_addsub_fft_quad.xci \
 fft_quad.v [ipx::get_file_groups xilinx_anylanguagesynthesis -of_objects [ipx::current_core]]
 
 
