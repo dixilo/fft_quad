@@ -17,7 +17,8 @@ module fft_quad#(
     output [63:0] data_out_2,
     output [63:0] data_out_3,
     output [13:0] k,
-    output m_valid
+    output m_valid,
+    output m_last
 );
     
     wire [63:0] fft_data_0;
@@ -61,7 +62,6 @@ module fft_quad#(
     wire last_2;
     wire last_3;
 
-    
     // FFT
     xfft_0 fft_0 (
         .aclk(clk),
@@ -165,9 +165,11 @@ module fft_quad#(
       .s_axis_tvalid(valid_fft_0),
       .s_axis_tready(),
       .s_axis_tdata(k_0),
+      .s_axis_tlast(last_0),
       .m_axis_tvalid(),
       .m_axis_tready(k_next),
-      .m_axis_tdata(k)
+      .m_axis_tdata(k),
+      .m_axis_tlast(m_last)
     ); 
 
     cordic_0 cord_0 (

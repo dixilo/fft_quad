@@ -39,7 +39,7 @@ set_property CONFIG.Round_Mode Nearest_Even [get_ips cordic_0]
 
 # FIFO for index
 create_ip -vlnv [latest_ip axis_data_fifo] -module_name axis_data_fifo_0
-set_property -dict [list CONFIG.TDATA_NUM_BYTES {2} CONFIG.FIFO_DEPTH {128}] [get_ips axis_data_fifo_0]
+set_property -dict [list CONFIG.TDATA_NUM_BYTES {2} CONFIG.FIFO_DEPTH {128} CONFIG.HAS_TLAST {1}] [get_ips axis_data_fifo_0]
 
 # Addsub
 create_ip -vlnv [latest_ip c_addsub] -module_name c_addsub_fft_quad
