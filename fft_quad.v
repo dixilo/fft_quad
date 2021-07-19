@@ -11,16 +11,24 @@ module fft_quad#(
     input clk,
     input resetn,
     input s_valid,
-    
+
+    // Timestamp information
+    input [31:0] s_axis_ts_tdata,
+    input        s_axis_ts_tvalid,
+    output       s_axis_ts_tready,
+    input        s_axis_ts_tlast,
+
     output [63:0] data_out_0,
     output [63:0] data_out_1,
     output [63:0] data_out_2,
     output [63:0] data_out_3,
     output [13:0] k,
+    output [31:0] timestamp,
+
     output m_valid,
     output m_last
 );
-    
+
     wire [63:0] fft_data_0;
     wire [63:0] fft_data_1;
     wire [63:0] fft_data_2;
@@ -402,5 +410,10 @@ module fft_quad#(
         end
     end
     assign k_next = v_buf[5];
+
+
+    // Packet number logic
+    assign timestamp = s_axis_ts_tdata;
+    assign s_axis_ts_tready = m_last;
 
 endmodule
